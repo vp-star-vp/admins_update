@@ -6,7 +6,7 @@
         href="https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/documentation/"
         target="_blank"
       >
-        <h1>Test VP commit vp  2</h1>
+        <h1>Test VP commit vp  2 ///////////// **********</h1>
       </b-link> to understand where to go from here and how to use our template.</b-card-text>
     </b-card>
 
