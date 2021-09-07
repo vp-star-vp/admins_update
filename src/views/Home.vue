@@ -6,7 +6,8 @@
         href="https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/documentation/"
         target="_blank"
       >
-        Template Documentation
+        <h1>VP - vp-start-vp</h1>
+        <p>commit</p>
       </b-link> to understand where to go from here and how to use our template.</b-card-text>
     </b-card>
 
