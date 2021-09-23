@@ -5,8 +5,8 @@ export default [
     icon: 'HomeIcon',
   },
   {
-    title: 'Second Page',
-    route: 'second-page',
-    icon: 'FileIcon',
+    title: 'Todo',
+    route: 'apps-todo',
+    icon: 'CheckSquareIcon',
   },
 ]

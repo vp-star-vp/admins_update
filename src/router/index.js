@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// Routes
+import apps from './routes/apps'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -24,20 +27,21 @@ const router = new VueRouter({
         ],
       },
     },
-    {
-      path: '/second-page',
-      name: 'second-page',
-      component: () => import('@/views/SecondPage.vue'),
-      meta: {
-        pageTitle: 'Second Page',
-        breadcrumb: [
-          {
-            text: 'Second Page',
-            active: true,
-          },
-        ],
-      },
-    },
+    // {
+    //   path: '/second-page',
+    //   name: 'second-page',
+    //   component: () => import('@/views/SecondPage.vue'),
+    //   meta: {
+    //     pageTitle: 'Second Page',
+    //     breadcrumb: [
+    //       {
+    //         text: 'Second Page',
+    //         active: true,
+    //       },
+    //     ],
+    //   },
+    // },
+    ...apps,
     {
       path: '/login',
       name: 'login',

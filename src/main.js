@@ -13,6 +13,9 @@ import './global-components'
 import '@/libs/portal-vue'
 import '@/libs/toastification'
 
+// Axios Mock Adapter
+import '@/@fake-db/db'
+
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)
