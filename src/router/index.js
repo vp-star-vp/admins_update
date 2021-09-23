@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// Routes
+import apps from './routes/apps'
 
 Vue.use(VueRouter)
 
@@ -25,17 +27,12 @@ const router = new VueRouter({
       },
     },
     {
-      path: '/second-page',
-      name: 'second-page',
-      component: () => import('@/views/SecondPage.vue'),
+      path: '/email',
+      name: 'apps-email',
+      component: () => import('@/views/apps/email/Email.vue'),
       meta: {
-        pageTitle: 'Second Page',
-        breadcrumb: [
-          {
-            text: 'Second Page',
-            active: true,
-          },
-        ],
+        contentRenderer: 'sidebar-left',
+        contentClass: 'email-application',
       },
     },
     {
@@ -58,6 +55,7 @@ const router = new VueRouter({
       path: '*',
       redirect: 'error-404',
     },
+    ...apps,
   ],
 })
 

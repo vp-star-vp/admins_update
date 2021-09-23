@@ -12,14 +12,14 @@ import './global-components'
 // 3rd party plugins
 import '@/libs/portal-vue'
 import '@/libs/toastification'
-
+import '@/@fake-db/db'
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)
 
 // Composition API
 Vue.use(VueCompositionAPI)
-
+require('@core/assets/fonts/feather/iconfont.css')
 // import core styles
 require('@core/scss/core.scss')
 

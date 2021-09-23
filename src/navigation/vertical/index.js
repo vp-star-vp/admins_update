@@ -5,8 +5,8 @@ export default [
     icon: 'HomeIcon',
   },
   {
-    title: 'Second Page',
-    route: 'second-page',
+    title: 'Email',
+    route: 'apps-email',
     icon: 'FileIcon',
   },
 ]
