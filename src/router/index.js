@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // Routes
-import apps from './routes/apps'
+// import apps from './routes/apps'
 
 Vue.use(VueRouter)
 
@@ -15,6 +15,34 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
+      component: () => import('@/views/apps/Contact/Contact.vue'),
+      // meta: {
+      // pageTitle: 'Home',
+      // breadcrumb: [
+      //  {
+      // text: 'Home',
+      //  active: true,
+      //  },
+      // ],
+      // },
+    },
+    {
+      path: '/:number',
+      name: 'home',
+      component: () => import('@/views/apps/Contact/Contact.vue'),
+      // meta: {
+      // pageTitle: 'Home',
+      // breadcrumb: [
+      //  {
+      // text: 'Home',
+      //  active: true,
+      //  },
+      // ],
+      // },
+    },
+    /*    {
+      path: '/',
+      name: 'home',
       component: () => import('@/views/Home.vue'),
       meta: {
         pageTitle: 'Home',
@@ -25,8 +53,8 @@ const router = new VueRouter({
           },
         ],
       },
-    },
-    {
+    }, */
+    /* {
       path: '/email',
       name: 'apps-email',
       component: () => import('@/views/apps/email/Email.vue'),
@@ -34,7 +62,7 @@ const router = new VueRouter({
         contentRenderer: 'sidebar-left',
         contentClass: 'email-application',
       },
-    },
+    }, */
     {
       path: '/login',
       name: 'login',
@@ -55,7 +83,6 @@ const router = new VueRouter({
       path: '*',
       redirect: 'error-404',
     },
-    ...apps,
   ],
 })
 
