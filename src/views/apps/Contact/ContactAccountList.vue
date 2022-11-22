@@ -18,7 +18,8 @@
         {{ data.item.CustName }}
         <p class="id">
           <template v-if="data.item.CustCity.length>0">
-          {{ data.item.CustCity }},
+            {{ data.item.CustCity }},
+
           </template>
           код DAX: {{ data.item.CustId }}
         </p>
