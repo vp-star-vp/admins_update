@@ -7,7 +7,6 @@
     <component :is="layout">
       <router-view />
     </component>
-
   </div>
 </template>
 
@@ -18,9 +17,7 @@ import { $themeColors, $themeBreakpoints, $themeConfig } from '@themeConfig'
 import { provideToast } from 'vue-toastification/composition'
 import { watch } from '@vue/composition-api'
 import useAppConfig from '@core/app-config/useAppConfig'
-
 import { useWindowSize, useCssVar } from '@vueuse/core'
-
 import store from '@/store'
 
 const LayoutVertical = () => import('@/layouts/vertical/LayoutVertical.vue')
@@ -29,12 +26,9 @@ const LayoutFull = () => import('@/layouts/full/LayoutFull.vue')
 
 export default {
   components: {
-
-    // Layouts
     LayoutHorizontal,
     LayoutVertical,
     LayoutFull,
-
   },
   // ! We can move this computed: layout & contentLayoutType once we get to use Vue 3
   // Currently, router.currentRoute is not reactive and doesn't trigger any change

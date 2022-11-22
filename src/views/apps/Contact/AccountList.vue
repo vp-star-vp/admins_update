@@ -11,7 +11,15 @@
           {{ item.CustNameFull }}
         </p>
         <p class="id">
-            <b>{{ item.CustCity }}</b>, код DAX: <b> {{ item.CustId }} </b>,   контактов:  <b-badge
+          <template v-if="item.Custgroup.length > 0">
+          группа: <b> {{ item.Custgroup }} </b>,
+          </template>
+          <template v-if="item.CustCity.length > 0">
+          <b>{{ item.CustCity }}</b>,
+          </template>
+          код DAX: <b> {{ item.CustId }} </b>,
+          контактов:
+          <b-badge
             pill
             variant="primary"
           >

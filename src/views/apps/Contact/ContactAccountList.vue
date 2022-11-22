@@ -17,7 +17,10 @@
       <template #cell(CustName)="data">
         {{ data.item.CustName }}
         <p class="id">
-          {{ data.item.CustCity }}, код DAX: {{ data.item.CustId }}
+          <template v-if="data.item.CustCity.length>0">
+          {{ data.item.CustCity }},
+          </template>
+          код DAX: {{ data.item.CustId }}
         </p>
       </template>
       <template #cell(ContactName)="data">

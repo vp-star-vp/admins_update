@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: '/iReports_Vuexy',
+  publicPath: '/getcontact',
   /*  module: {
     loaders: [
       {
