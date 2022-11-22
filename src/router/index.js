@@ -24,7 +24,6 @@ const router = new VueRouter({
       path: '/:number',
       name: 'home',
       component: () => import('@/views/apps/Contact/Contact.vue'),
-
     },
     /*    {
       path: '/',
