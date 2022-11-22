@@ -25,7 +25,7 @@
         </p>
       </template>
       <template #cell(ContactName)="data">
-        {{ data.item.ContactName }}
+        {{ data.item.ContactName }} ++
         <p class="id">
           {{ data.item.ContactTitle }}
         </p>
