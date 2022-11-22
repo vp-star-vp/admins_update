@@ -53,7 +53,7 @@
             <b-tab>
               <template #title>
                 <feather-icon />
-                <span>Сейлы</span>
+                <span>Сейлы </span>
               </template>
               <ContactAccountManagerList :number="number" />
             </b-tab>
