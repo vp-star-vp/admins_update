@@ -3,9 +3,11 @@ import mock from './mock'
 /* eslint-disable import/extensions */
 
 // JWT
+import './jwt'
 
-import './data/apps/email'
+// Apps
+import './data/apps/todo'
 
 /* eslint-enable import/extensions */
-console.log(12345)
+
 mock.onAny().passThrough() // forwards the matched request over network
