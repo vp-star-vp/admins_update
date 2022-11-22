@@ -19,29 +19,12 @@ const router = new VueRouter({
       path: '/',
       name: 'home',
       component: () => import('@/views/apps/Contact/Contact.vue'),
-      // meta: {
-      // pageTitle: 'Home',
-      // breadcrumb: [
-      //  {
-      // text: 'Home',
-      //  active: true,
-      //  },
-      // ],
-      // },
     },
     {
       path: '/:number',
       name: 'home',
       component: () => import('@/views/apps/Contact/Contact.vue'),
-      // meta: {
-      // pageTitle: 'Home',
-      // breadcrumb: [
-      //  {
-      // text: 'Home',
-      //  active: true,
-      //  },
-      // ],
-      // },
+
     },
     /*    {
       path: '/',
