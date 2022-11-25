@@ -56,7 +56,7 @@ export default {
   props: {
     number: {
       type: String,
-      default: '+79174339210',
+      default: '',
     },
   },
   setup(props) {

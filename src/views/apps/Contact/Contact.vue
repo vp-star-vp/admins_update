@@ -100,13 +100,14 @@ export default {
 
   setup() {
     const { route } = useRouter()
-    const number = ref('')
-    const numberLoc = ref('')
+    const number = ref()
+    const numberLoc = ref('78005553999')
 
-    numberLoc.value = route.value.params.number
+    if (route.value.params.number) {
+      numberLoc.value = route.value.params.number
+    }
 
     function temp() {
-      console.log('numberLoc.value ', numberLoc.value)
       number.value = numberLoc.value
     }
 
