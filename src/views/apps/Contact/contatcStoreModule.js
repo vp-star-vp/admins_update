@@ -25,11 +25,11 @@ export default {
         const queryParams = {
           paramPack: {
             Search: number,
+            Solution: `${store.getters.USER_STATE_FULL.solution}`,
           },
         }
         const paramPack = jsonformdata(queryParams, options)
         const configOptions = {
-          // url: `${store.getters.USER_STATE_FULL.url}wolgadata_datacalc.sales.variable.form`,
           url: `${store.getters.USER_STATE_FULL.url}wolgadata_sfb.search_byphone.contactcust.form`,
           method: 'post',
           headers: { 'Content-Type': 'multipart/form-data' },
@@ -43,7 +43,6 @@ export default {
     },
     SEARCH_BY_PHONE_CUST_MANAGER(ctx, number) {
       return new Promise((resolve, reject) => {
-        // console.log('number: ', number)
         const options = {
           initialFormData: new FormData(),
           showLeafArrayIndexes: true,
@@ -58,6 +57,7 @@ export default {
         const queryParams = {
           paramPack: {
             Search: number,
+            Solution: `${store.getters.USER_STATE_FULL.solution}`,
           },
         }
         const paramPack = jsonformdata(queryParams, options)
@@ -89,6 +89,7 @@ export default {
         const queryParams = {
           paramPack: {
             Search: number,
+            Solution: `${store.getters.USER_STATE_FULL.solution}`,
           },
         }
         const paramPack = jsonformdata(queryParams, options)

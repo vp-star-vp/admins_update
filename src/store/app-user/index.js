@@ -1,9 +1,7 @@
 export default {
   state: {
-    url: 'https://wolga-testzone.ocs.ru/ExtSolution/',
-    //   'https://wolga-testzone.ocs.ru/ExtSolution/',
-    //   'https://wolga-datapoint.ocs.ru/',
-    //   'https://wolga-info.ocs.ru/api/',
+    url: 'https://wolga-info.ocs.ru/api/',
+    solution: 'SBFGetContact',
   },
   getters: {
     USER_STATE_FULL(state) {
