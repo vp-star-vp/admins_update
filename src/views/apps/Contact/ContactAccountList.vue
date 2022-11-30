@@ -6,7 +6,14 @@
       small
       fixed
       style="max-height: 400px; font-size: 13px;color: #1b2337"
+      :busy="isBusy"
     >
+      <template #table-busy>
+        <div class="text-center text-danger my-2">
+          <b-spinner class="align-middle" />
+          <strong> Загрузка...</strong>
+        </div>
+      </template>
       <template #table-colgroup="scope">
         <col
           v-for="field in scope.fields"
@@ -59,15 +66,6 @@
           /> {{ data.item.ContactCellular }}
         </p>
       </template>
-      <!--     <template #cell(ContactName)="data">
-            {{data.item.ContactName}}
-            <p class="id">
-                {{data.item.ContactTitle}}
-            </p>
-            <p class="email">
-                {{data.item.ContactEmail}}
-            </p>
-        </template>-->
     </b-table>
   </div>
 </template>
@@ -76,7 +74,7 @@
 
 import store from '@/store'
 import {
-  BTable,
+  BTable, BSpinner,
 } from 'bootstrap-vue'
 import {
   ref, onUnmounted, toRefs, watch,
@@ -86,7 +84,7 @@ import contactStore from './contatcStoreModule'
 export default {
   name: 'ContactAccountList',
   components: {
-    BTable,
+    BTable, BSpinner,
   },
   props: {
     number: {
@@ -97,6 +95,7 @@ export default {
   setup(props) {
     const USER_APP_STORE_MODULE_NAME = 'app-contact'
     const data = ref([])
+    const isBusy = ref(false)
     const tableColumns = [
       { key: 'ContactName', label: 'Контакт', sortable: true },
       { key: 'CustName', label: 'Клиент', sortable: true },
@@ -111,17 +110,14 @@ export default {
     onUnmounted(() => {
       if (store.hasModule(USER_APP_STORE_MODULE_NAME)) store.unregisterModule(USER_APP_STORE_MODULE_NAME)
     })
-    /*    store
-      .dispatch('app-contact/SEARCH_BY_PHONE_CONTACT_CUST', number.value)
-      .then(response => {
-        data.value = response.data.data
-      }) */
 
     function getData() {
+      isBusy.value = true
       store
         .dispatch('app-contact/SEARCH_BY_PHONE_CONTACT_CUST', number.value)
         .then(response => {
           data.value = response.data.data
+          isBusy.value = false
         })
     }
     getData()
@@ -134,6 +130,7 @@ export default {
       data,
       tableColumns,
       number,
+      isBusy,
     }
   },
 }

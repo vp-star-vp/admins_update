@@ -6,7 +6,14 @@
       small
       fixed
       style="max-height: 400px; font-size: 13px;color: #1b2337"
+      :busy="isBusy"
     >
+      <template #table-busy>
+        <div class="text-center text-danger my-2">
+          <b-spinner class="align-middle" />
+          <strong> Загрузка...</strong>
+        </div>
+      </template>
       <template #cell(CustName)="data">
         {{ data.item.CustName }}
         <p class="id">
@@ -41,6 +48,7 @@ import store from '@/store'
 import {
   BTable,
   BAvatar,
+  BSpinner,
 } from 'bootstrap-vue'
 import {
   ref, onUnmounted, toRefs, watch,
@@ -52,6 +60,7 @@ export default {
   components: {
     BTable,
     BAvatar,
+    BSpinner,
   },
   props: {
     number: {
@@ -61,6 +70,7 @@ export default {
   },
   setup(props) {
     const USER_APP_STORE_MODULE_NAME = 'app-contact'
+    const isBusy = ref(false)
     const data = ref([])
     const tableColumns = [
       // { key: 'ContactName', label: 'Контакт', sortable: true },
@@ -84,10 +94,12 @@ export default {
     })
 
     function getData() {
+      isBusy.value = true
       store
         .dispatch('app-contact/SEARCH_BY_PHONE_CUST_MANAGER', number.value)
         .then(response => {
           data.value = response.data.data
+          isBusy.value = false
         })
     }
     getData()
@@ -100,6 +112,7 @@ export default {
       data,
       tableColumns,
       number,
+      isBusy,
     }
   },
 }
