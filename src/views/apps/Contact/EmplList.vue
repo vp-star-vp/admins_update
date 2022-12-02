@@ -3,39 +3,22 @@
   <div>
     <b-card
       v-for="(item) in data"
-      :key="item.CustId"
+      :key="item.ContactId"
       style="min-width: 300px;"
     >
       <b-card-text>
         <p class="name">
-          {{ item.CustNameFull }}
+          {{ item.ContactName }}
         </p>
         <p class="id">
-          <template v-if="item.Custgroup.length > 0">
-          группа: <b> {{ item.Custgroup }} </b>,
-          </template>
-          <template v-if="item.CustCity.length > 0">
-          <b>{{ item.CustCity }}</b>,
-          </template>
-          код DAX: <b> {{ item.CustId }} </b>
-         </p>
+        {{ item.ContactTitle }}
+      </p>
         <p class="id">
-          контактов:
-          <b-badge
-                  pill
-                  variant="primary"
-          >
-            {{ item.ContactsCnt }}
-          </b-badge>
+          email: <b>{{ item.ContactEmail }} </b>,   город: <b>{{ item.ContactAddress }} </b>
         </p>
-        <!--    <p class="id">
-                контактов:  <b-badge
-                  pill
-                  variant="primary"
-                >
-                  {{ item.ContactsCnt }}
-                </b-badge>
-              </p>-->
+        <p class="id">
+          телефон моб: <b> {{ item.ContactCellular }} </b>
+        </p>
       </b-card-text>
     </b-card>
   </div>
@@ -46,7 +29,7 @@
 
 import store from '@/store'
 import {
-  BCard, /* BCardGroup, /* BRow, BCol, */ BBadge,
+  BCard,
 } from 'bootstrap-vue'
 import {
   ref, onUnmounted, toRefs, watch,
@@ -56,7 +39,7 @@ import contactStore from './contatcStoreModule'
 export default {
   name: 'ContactAccountList',
   components: {
-    BCard, /* BRow, BCol, */ BBadge, // BCardGroup,
+    BCard,
   },
   props: {
     number: {
@@ -102,7 +85,7 @@ export default {
 
     function getData() {
       store
-        .dispatch('app-contact/SEARCH_BY_PHONE_CUST', number.value)
+        .dispatch('app-contact/SEARCH_BY_PHONE_EMPL', number.value)
         .then(response => {
           data.value = response.data.data
         })

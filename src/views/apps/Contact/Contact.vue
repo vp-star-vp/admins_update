@@ -6,22 +6,27 @@
           <b-card>
             <b-media>
               <template #aside>
-                <b-img
+               <!-- <b-img
                   alt="placeholder"
                   src="../../../assets/images/logo/icon.jpg"
                   width="45"
-                />
+                />-->
+               <b-img
+                 alt="placeholder"
+                 src="../../../assets/images/logo/men_find.png"
+                 width="70"
+               />
               </template>
               <h5 class="mt-0">
                 GetContact
               </h5>
-              <p>
+                <label>
                 Поиск контактных лиц среди дилеров компании OCS, для поиска используются данные из ИС DAX.
-              </p>
+                </label>
             </b-media>
             <b-row>
-              <b-col cols="4">
-                <b-input-group style="margin-left: 58px;">
+              <b-col cols="6">
+                <b-input-group style="margin-left: 85px; margin-top: -15px; max-width: 500px;">
                   <b-form-input
                     v-model="numberLoc"
                     placeholder="поиск контакта по телефонному номеру"
@@ -36,7 +41,7 @@
                     </b-button>
                   </b-input-group-append>
                 </b-input-group>
-                <label v-if="inputCheck" style="margin-left: 58px; color: #ea5455">Длина номера должна быть больше 3 символов</label>
+                <label v-if="inputCheck" style="margin-left: 85px; color: #ea5455">Длина номера должна быть больше 3 символов</label>
               </b-col>
             </b-row>
           </b-card>
@@ -68,14 +73,14 @@
             <b-tab>
               <template #title>
                 <feather-icon />
-                <span>Контакты</span>
+                <span>Контакты дилеров</span>
               </template>
               <ContactAccountList :number="number" />
             </b-tab>
             <b-tab>
               <template #title>
                 <feather-icon />
-                <span>Сейлы </span>
+                <span>Ответственные сейлы </span>
               </template>
               <ContactAccountManagerList :number="number" />
             </b-tab>
@@ -83,7 +88,22 @@
         </b-card>
       </b-col>
       <b-col cols="4">
-        <AccountList :number="number" />
+        <b-tabs>
+          <b-tab>
+            <template #title>
+              <feather-icon />
+              <span>Сотрудник OCS</span>
+            </template>
+            <EmplList :number="number" />
+          </b-tab>
+          <b-tab>
+          <template #title>
+            <feather-icon />
+            <span>Дилеры</span>
+          </template>
+          <AccountList :number="number" />
+          </b-tab>
+        </b-tabs>
       </b-col>
     </b-row>
   </div>
@@ -100,6 +120,7 @@ import { useRouter } from '@core/utils/utils'
 import ContactAccountList from './ContactAccountList.vue'
 import ContactAccountManagerList from './ContactAccountManagerList.vue'
 import AccountList from './AccountList.vue'
+import EmplList from './EmplList.vue'
 
 export default {
   name: 'Contact',
@@ -107,6 +128,7 @@ export default {
     ContactAccountList,
     ContactAccountManagerList,
     AccountList,
+    EmplList,
     BTabs,
     BTab,
     BFormInput,

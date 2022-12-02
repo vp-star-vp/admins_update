@@ -105,6 +105,38 @@ export default {
           .catch(error => reject(error))
       })
     },
+    SEARCH_BY_PHONE_EMPL(ctx, number) {
+      return new Promise((resolve, reject) => {
+        const options = {
+          initialFormData: new FormData(),
+          showLeafArrayIndexes: true,
+          includeNullValues: false,
+          mapping(value) {
+            if (typeof value === 'boolean') {
+              return +value ? 'true' : 'false'
+            }
+            return value
+          },
+        }
+        const queryParams = {
+          paramPack: {
+            Search: number,
+            Solution: `${store.getters.USER_STATE_FULL.solution}`,
+          },
+        }
+        const paramPack = jsonformdata(queryParams, options)
+        const configOptions = {
+          url: `${store.getters.USER_STATE_FULL.url}wolgadata_sfb.search_byphone.emploee.form`,
+          method: 'post',
+          headers: { 'Content-Type': 'multipart/form-data' },
+          data: paramPack,
+          withCredentials: true,
+        }
+        axios(configOptions)
+          .then(response => resolve(response))
+          .catch(error => reject(error))
+      })
+    },
 
   },
 }
