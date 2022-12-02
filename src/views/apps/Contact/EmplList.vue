@@ -16,6 +16,10 @@
         <p class="id">
           email: <b>{{ item.ContactEmail }} </b>,   город: <b>{{ item.ContactAddress }} </b>
         </p>
+
+        <p class="id">
+          внутр.тел: <b> {{ item.ContactTel }} </b>
+        </p>
         <p class="id">
           телефон моб: <b> {{ item.ContactCellular }} </b>
         </p>
