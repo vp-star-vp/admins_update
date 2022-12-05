@@ -6,23 +6,23 @@
           <b-card>
             <b-media>
               <template #aside>
-               <!-- <b-img
+                <!-- <b-img
                   alt="placeholder"
                   src="../../../assets/images/logo/icon.jpg"
                   width="45"
                 />-->
-               <b-img
-                 alt="placeholder"
-                 src="../../../assets/images/logo/men_find.png"
-                 width="70"
-               />
+                <b-img
+                  alt="placeholder"
+                  src="../../../assets/images/logo/men_find.png"
+                  width="70"
+                />
               </template>
               <h5 class="mt-0">
                 GetContact
               </h5>
-                <label>
+              <label>
                 Поиск контактных лиц среди дилеров компании OCS, для поиска используются данные из ИС DAX.
-                </label>
+              </label>
             </b-media>
             <b-row>
               <b-col cols="6">
@@ -41,7 +41,10 @@
                     </b-button>
                   </b-input-group-append>
                 </b-input-group>
-                <label v-if="inputCheck" style="margin-left: 85px; color: #ea5455">Длина номера должна быть больше 3 символов</label>
+                <label
+                  v-if="inputCheck"
+                  style="margin-left: 85px; color: #ea5455"
+                >Длина номера должна быть больше 3 символов</label>
               </b-col>
             </b-row>
           </b-card>
@@ -74,6 +77,12 @@
               <template #title>
                 <feather-icon />
                 <span>Контакты дилеров</span>
+                <b-badge
+                  pill
+                  variant="primary"
+                  class="hd"
+                >{{ $store.getters['app-contact/AMOUNT'].amountContact }}
+                </b-badge>
               </template>
               <ContactAccountList :number="number" />
             </b-tab>
@@ -81,6 +90,12 @@
               <template #title>
                 <feather-icon />
                 <span>Ответственные сейлы </span>
+                <b-badge
+                  pill
+                  variant="primary"
+                  class="hd"
+                >{{ $store.getters['app-contact/AMOUNT'].amountSale }}
+                </b-badge>
               </template>
               <ContactAccountManagerList :number="number" />
             </b-tab>
@@ -89,19 +104,31 @@
       </b-col>
       <b-col cols="4">
         <b-tabs>
-          <b-tab>
+          <b-tab >
             <template #title>
               <feather-icon />
               <span>Сотрудник OCS</span>
+              <b-badge
+                pill
+                variant="primary"
+                class="hd"
+              >{{ $store.getters['app-contact/AMOUNT'].amountEmpl }}
+              </b-badge>
             </template>
             <EmplList :number="number" />
           </b-tab>
-          <b-tab>
-          <template #title>
-            <feather-icon />
-            <span>Дилеры</span>
-          </template>
-          <AccountList :number="number" />
+          <b-tab >
+            <template #title>
+              <feather-icon />
+              <span>Дилеры</span>
+              <b-badge
+                pill
+                variant="primary"
+                class="hd"
+              >{{ $store.getters['app-contact/AMOUNT'].amountCust }}
+              </b-badge>
+            </template>
+            <AccountList :number="number" />
           </b-tab>
         </b-tabs>
       </b-col>
@@ -111,16 +138,18 @@
 
 <script>
 import {
-  BTabs, BTab, BFormInput, BRow, BCol, BCard, BInputGroup, BButton, BInputGroupAppend, BMedia, BImg,
+  BTabs, BTab, BFormInput, BRow, BCol, BCard, BInputGroup, BButton, BInputGroupAppend, BMedia, BImg, BBadge,
 } from 'bootstrap-vue'
+import store from '@/store'
 import {
-  ref, watch,
+  ref, watch, onUnmounted,
 } from '@vue/composition-api'
 import { useRouter } from '@core/utils/utils'
 import ContactAccountList from './ContactAccountList.vue'
 import ContactAccountManagerList from './ContactAccountManagerList.vue'
 import AccountList from './AccountList.vue'
 import EmplList from './EmplList.vue'
+import contactStore from './contatcStoreModule'
 
 export default {
   name: 'Contact',
@@ -140,13 +169,22 @@ export default {
     BInputGroupAppend,
     BMedia,
     BImg,
+    BBadge,
   },
 
   setup() {
+    const USER_APP_STORE_MODULE_NAME = 'app-contact'
     const { route } = useRouter()
     const number = ref()
     const numberLoc = ref('78005553999')
     const inputCheck = ref(false)
+
+    // Register module
+    if (!store.hasModule(USER_APP_STORE_MODULE_NAME)) store.registerModule(USER_APP_STORE_MODULE_NAME, contactStore)
+    // UnRegister on leave
+    onUnmounted(() => {
+      if (store.hasModule(USER_APP_STORE_MODULE_NAME)) store.unregisterModule(USER_APP_STORE_MODULE_NAME)
+    })
 
     if (route.value.params.number) {
       numberLoc.value = route.value.params.number
@@ -184,6 +222,8 @@ export default {
     top: 0;
     min-height: 2em;
     z-index: 1;
-
+  }
+  .hd{
+    margin-left: 10px;
   }
 </style>

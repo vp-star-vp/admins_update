@@ -5,11 +5,32 @@ import store from '@/store'
 export default {
   namespaced: true,
   state: {
+    amountContact: 0,
+    amountSale: 0,
+    amountCust: 0,
+    amountEmpl: 0,
   },
-  getters: {},
-  mutations: {},
+  getters: {
+    AMOUNT(state) {
+      return state
+    },
+  },
+  mutations: {
+    SET_AMOUNT_CONTACT(state, val) {
+      state.amountContact = val
+    },
+    SET_AMOUNT_SALE(state, val) {
+      state.amountSale = val
+    },
+    SET_AMOUNT_CUST(state, val) {
+      state.amountCust = val
+    },
+    SET_AMOUNT_EMPL(state, val) {
+      state.amountEmpl = val
+    },
+  },
   actions: {
-    SEARCH_BY_PHONE_CONTACT_CUST(ctx, number) {
+    SEARCH_BY_PHONE_CONTACT_CUST({ commit }, number) {
       return new Promise((resolve, reject) => {
         const options = {
           initialFormData: new FormData(),
@@ -37,11 +58,14 @@ export default {
           withCredentials: true,
         }
         axios(configOptions)
-          .then(response => resolve(response))
+          .then(response => {
+            commit('SET_AMOUNT_CONTACT', response.data.data.length)
+            return resolve(response)
+          })
           .catch(error => reject(error))
       })
     },
-    SEARCH_BY_PHONE_CUST_MANAGER(ctx, number) {
+    SEARCH_BY_PHONE_CUST_MANAGER({ commit }, number) {
       return new Promise((resolve, reject) => {
         const options = {
           initialFormData: new FormData(),
@@ -69,11 +93,14 @@ export default {
           withCredentials: true,
         }
         axios(configOptions)
-          .then(response => resolve(response))
+          .then(response => {
+            commit('SET_AMOUNT_SALE', response.data.data.length)
+            resolve(response)
+          })
           .catch(error => reject(error))
       })
     },
-    SEARCH_BY_PHONE_CUST(ctx, number) {
+    SEARCH_BY_PHONE_CUST({ commit }, number) {
       return new Promise((resolve, reject) => {
         const options = {
           initialFormData: new FormData(),
@@ -101,11 +128,14 @@ export default {
           withCredentials: true,
         }
         axios(configOptions)
-          .then(response => resolve(response))
+          .then(response => {
+            commit('SET_AMOUNT_CUST', response.data.data.length)
+            return resolve(response)
+          })
           .catch(error => reject(error))
       })
     },
-    SEARCH_BY_PHONE_EMPL(ctx, number) {
+    SEARCH_BY_PHONE_EMPL({ commit }, number) {
       return new Promise((resolve, reject) => {
         const options = {
           initialFormData: new FormData(),
@@ -133,7 +163,10 @@ export default {
           withCredentials: true,
         }
         axios(configOptions)
-          .then(response => resolve(response))
+          .then(response => {
+            commit('SET_AMOUNT_EMPL', response.data.data.length)
+            return resolve(response)
+          })
           .catch(error => reject(error))
       })
     },
