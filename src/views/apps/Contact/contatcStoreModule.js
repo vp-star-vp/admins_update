@@ -9,6 +9,7 @@ export default {
     amountSale: 0,
     amountCust: 0,
     amountEmpl: 0,
+    faqUrl: 'https://confluence.inside/pages/viewpage.action?pageId=191284320',
   },
   getters: {
     AMOUNT(state) {
@@ -59,7 +60,11 @@ export default {
         }
         axios(configOptions)
           .then(response => {
-            commit('SET_AMOUNT_CONTACT', response.data.data.length)
+            if (response.data.data && response.data.data !== null) {
+              commit('SET_AMOUNT_CONTACT', response.data.data.length)
+            } else {
+              commit('SET_AMOUNT_CONTACT', 0)
+            }
             return resolve(response)
           })
           .catch(error => reject(error))
@@ -94,7 +99,11 @@ export default {
         }
         axios(configOptions)
           .then(response => {
-            commit('SET_AMOUNT_SALE', response.data.data.length)
+            if (response.data.data && response.data.data !== null) {
+              commit('SET_AMOUNT_SALE', response.data.data.length)
+            } else {
+              commit('SET_AMOUNT_SALE', 0)
+            }
             resolve(response)
           })
           .catch(error => reject(error))
@@ -129,7 +138,11 @@ export default {
         }
         axios(configOptions)
           .then(response => {
-            commit('SET_AMOUNT_CUST', response.data.data.length)
+            if (response.data.data && response.data.data !== null) {
+              commit('SET_AMOUNT_CUST', response.data.data.length)
+            } else {
+              commit('SET_AMOUNT_CUST', 0)
+            }
             return resolve(response)
           })
           .catch(error => reject(error))
@@ -164,7 +177,11 @@ export default {
         }
         axios(configOptions)
           .then(response => {
-            commit('SET_AMOUNT_EMPL', response.data.data.length)
+            if (response.data.data && response.data.data !== null) {
+              commit('SET_AMOUNT_EMPL', response.data.data.length)
+            } else {
+              commit('SET_AMOUNT_EMPL', 0)
+            }
             return resolve(response)
           })
           .catch(error => reject(error))
