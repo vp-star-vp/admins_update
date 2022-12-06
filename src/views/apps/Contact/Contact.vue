@@ -42,7 +42,7 @@
                 >Длина номера должна быть больше 3 символов</label>
               </b-col>
               <b-col cols="6" class="text-right">
-                <b-link target="_blank" :href="$store.getters['app-contact/AMOUNT'].faqUrl">GetContact 1.5.0</b-link>
+                <b-link target="_blank" :href="$store.getters['app-contact/AMOUNT'].faqUrl">GetContact 1.5.2</b-link>
               </b-col>
             </b-row>
           </b-card>
