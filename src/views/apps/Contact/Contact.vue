@@ -16,15 +16,15 @@
                 GetContact
               </h5>
               <label>
-                Поиск контактных лиц среди дилеров компании OCS, для поиска используются данные из ИС DAX.
+                Поиск контактных лиц среди дилеров компании OCS.
               </label>
             </b-media>
             <b-row>
               <b-col cols="6">
-                <b-input-group style="margin-left: 85px; margin-top: -15px; max-width: 500px;">
+                <b-input-group style="margin-left: 85px; margin-top: -15px; max-width: 600px;">
                   <b-form-input
                     v-model="numberLoc"
-                    placeholder="поиск контакта по телефонному номеру"
+                    placeholder="поиск по моб. нормеру, email, имени, фамилии "
                   />
                   <b-input-group-append>
                     <b-button
@@ -41,16 +41,24 @@
                   style="margin-left: 85px; color: #ea5455"
                 >Длина номера должна быть больше 3 символов</label>
               </b-col>
-              <b-col cols="6" class="text-right">
-                <b-link target="_blank" :href="$store.getters['app-contact/AMOUNT'].faqUrl">GetContact 1.5.2</b-link>
+              <b-col
+                cols="6"
+                class="text-right"
+              >
+                <b-link
+                  target="_blank"
+                  :href="$store.getters['app-contact/AMOUNT'].faqUrl"
+                >
+                  GetContact 1.5.2
+                </b-link>
               </b-col>
             </b-row>
           </b-card>
         </b-col>
       </b-row>
     </div>
-    <b-row style="margin-top: 10px;" >
-      <b-col cols="8" >
+    <b-row style="margin-top: 10px;">
+      <b-col cols="8">
         <b-card>
           <b-tabs>
             <b-tab>
@@ -97,7 +105,7 @@
             </template>
             <EmplList :number="number" />
           </b-tab>
-          <b-tab >
+          <b-tab>
             <template #title>
               <feather-icon />
               <span>Дилеры</span>
@@ -172,7 +180,11 @@ export default {
     }
 
     function temp() {
-      number.value = numberLoc.value.replace(/\D/g, '')
+      if (/\d/.test(numberLoc.value) && !/[a-z]/.test(numberLoc.value) && !/[\u0400-\u04FF]/.test(numberLoc.value)) {
+        number.value = numberLoc.value.replace(/\D/g, '')
+      } else {
+        number.value = numberLoc.value
+      }
     }
 
     function checkVal(val) {
