@@ -1,4 +1,5 @@
-import useJwt from '@/auth/jwt/useJwt'
+// import useJwt from '@/auth/jwt/useJwt'
+import store from '@/store'
 
 /**
  * Return if user is logged in
@@ -6,11 +7,15 @@ import useJwt from '@/auth/jwt/useJwt'
  * e.g. If you are using cookies to store the application please update this function
  */
 // eslint-disable-next-line arrow-body-style
+/*
 export const isUserLoggedIn = () => {
   return localStorage.getItem('userData') && localStorage.getItem(useJwt.jwtConfig.storageTokenKeyName)
 }
+*/
 
-export const getUserData = () => JSON.parse(localStorage.getItem('userData'))
+export const isUserLoggedIn = () => store.getters.USER_STATE.email !== undefined
+
+// export const getUserData = () => JSON.parse(localStorage.getItem('userData'))
 
 /**
  * This function is used for demo purpose route navigation

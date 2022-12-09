@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
+// import { canNavigate } from '@/libs/acl/routeProtection'
+import { /* getUserRole, */ isUserLoggedIn } from '@/auth/utils'//
 // Routes
 // import apps from './routes/apps'
 
@@ -17,12 +20,12 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'contact',
       component: () => import('@/views/apps/Contact/Contact.vue'),
     },
     {
       path: '/:number',
-      name: 'home',
+      name: 'contact',
       component: () => import('@/views/apps/Contact/Contact.vue'),
     },
     /*    {
@@ -49,7 +52,6 @@ const router = new VueRouter({
         contentClass: 'email-application',
       },
     }, */
-
     // },
     // {
     //   path: '/second-page',
@@ -65,7 +67,16 @@ const router = new VueRouter({
     //     ],
     //   },
     // },
-
+    // *------------------- pages RULES NONE --------------------------------*
+    {
+      path: '/error-login/404',
+      name: 'error-login',
+      component: () => import('@/views/error/ComingSoon.vue'),
+      // meta: {
+      // layout: 'full',
+      // action: 'none',
+      // },
+    },
     {
       path: '/login',
       name: 'login',
@@ -78,15 +89,28 @@ const router = new VueRouter({
       path: '/error-404',
       name: 'error-404',
       component: () => import('@/views/error/Error404.vue'),
-      meta: {
+    /*  meta: {
         layout: 'full',
-      },
+      }, */
     },
     {
       path: '*',
       redirect: 'error-404',
     },
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  if (!isUserLoggedIn()) {
+    store.dispatch('START_LOADING').then(
+      () => {
+        if (store.getters.USER_STATE_FULL.ruleApproved) {
+        // console.log('store.getters.USER_STATE.ruleApproved: ', store.getters.USER_STATE_FULL.ruleApproved)
+          next()
+        } else next({ name: 'error-login' })
+      },
+    )
+  } else next()
 })
 
 // ? For splash screen
