@@ -45,12 +45,15 @@
                 cols="6"
                 class="text-right"
               >
+                <p class="login"> {{$store.getters['USER_STATE'].name}}, {{$store.getters['USER_STATE'].rbu}}</p>
+                <div  class="linkGC">
                 <b-link
                   target="_blank"
                   :href="$store.getters['app-contact/AMOUNT'].faqUrl"
                 >
-                  GetContact 1.5.2
+                  <feather-icon icon="ExternalLinkIcon" /> GetContact 1.5.2
                 </b-link>
+                </div>
               </b-col>
             </b-row>
           </b-card>
@@ -218,5 +221,13 @@ export default {
   }
   .hd{
     margin-left: 10px;
+  }
+  .login{
+    margin-top: -65px;
+
+ /*   color: #7367f0;*/
+  }
+  .linkGC{
+    margin-top: 50px;
   }
 </style>
