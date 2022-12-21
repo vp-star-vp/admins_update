@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
-// import { canNavigate } from '@/libs/acl/routeProtection'
 import { /* getUserRole, */ isUserLoggedIn } from '@/auth/utils'//
-// Routes
-// import apps from './routes/apps'
-
-// Routes
-// import apps from './routes/apps'
 
 Vue.use(VueRouter)
 
@@ -105,7 +99,6 @@ router.beforeEach((to, from, next) => {
     store.dispatch('START_LOADING').then(
       () => {
         if (store.getters.USER_STATE_FULL.ruleApproved) {
-        // console.log('store.getters.USER_STATE.ruleApproved: ', store.getters.USER_STATE_FULL.ruleApproved)
           next()
         } else next({ name: 'error-login' })
       },

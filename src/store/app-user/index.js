@@ -6,8 +6,9 @@ export default {
     solution: 'SBFGetContact',
     info: 'https://confluence.inside/pages/viewpage.action?pageId=191284320',
     user: [],
+    groupADAccess: 'f05-app-GetContact',
     ruleApproved: false,
-    rbuApproved: ['03', '04', '05'],
+    // rbuApproved: ['03', '04', '05'],
   },
   getters: {
     USER_STATE_FULL(state) {
@@ -16,16 +17,16 @@ export default {
     USER_STATE(state) {
       return state.user
     },
-    /* RBU_APPROVED(state){
-
-    }, */
   },
   mutations: {
     SET_USER_LOGIN(state, user) {
-      if (user.rbu && user.rbu.length > 0 && state.rbuApproved.indexOf(user.rbu.replace(/\D/g, '')) >= 0) {
+      /* if (user.rbu && user.rbu.length > 0 && state.rbuApproved.indexOf(user.rbu.replace(/\D/g, '')) >= 0) {
         state.ruleApproved = true
-      }
+      } */
       state.user = user
+    },
+    SET_ACCESS(state, access) {
+      state.ruleApproved = access
     },
   },
   actions: {
@@ -68,12 +69,18 @@ export default {
 
       commit('SET_USER_LOGIN', user.data)
     },
-    async START_LOADING({ dispatch /* , state /* , commit */ }) {
+    async CHECK_ACCESS({ commit, state }) {
+      const user = await axios({
+        url: `${state.url}wolgaadmin_secure.claimslist/${state.groupADAccess}`,
+        method: 'GET',
+        withCredentials: true,
+      })
+
+      commit('SET_ACCESS', user.data)
+    },
+    async START_LOADING({ dispatch }) {
       await dispatch('WHO_I_AM')
-      // await dispatch('PARAM_PACK')
-      // await dispatch('WHO_MY_GROUP')
-      // await dispatch('EMPL_LIST')
-      // await dispatch('userManagement/LOAD_PERMISSIONS', { root: true })
+      await dispatch('CHECK_ACCESS')
     },
   },
 }

@@ -1,10 +1,17 @@
 <template>
       <div class="text-center">
         <h2 class="mb-1">
+          <br>
+          <br>
           Ресурс вам не доступен.
         </h2>
         <p class="mb-3">
-           <b> {{$store.getters['USER_STATE'].name}} </b>,  если вам требуется доступ к данному ресурсу, то вам необходимо написать заявку на helpdesk!
+          <br>
+          <br>
+          <b> {{$store.getters['USER_STATE'].name}} </b>,  если вам требуется доступ к данному ресурсу, вам необходимо написать заявку на <b>helpdesk!</b>
+          <br>
+          <br>
+          В описании к заявки нужно указать чтобы вас включили в группу  Active Directory: <b> {{$store.getters['USER_STATE_FULL'].groupADAccess}} </b>.
         </p>
         <b-form
           v-if="1==3"
