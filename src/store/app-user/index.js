@@ -37,36 +37,6 @@ export default {
         withCredentials: true,
       })
 
-      /* user.value = {
-        sid: 'S-1-5-21-1982859038-251867848-951718399-70122',
-        id: '1000004540',
-        name: 'Рядинская Виктория',
-        fullName: 'Рядинская Виктория Викторовна',
-        email: 'vryadinskaya@ocs.ru',
-        daxEmplId: '03060269',
-        jobTitle: 'Офис-менеджер',
-        sP_PhotoUrl: '',
-        bitrix_PhotoUrl: '',
-        city: 'Воронеж',
-        workGroupId: '632_',
-        workGroupName: 'Секретариат РБЮ Юг',
-        phone: '3719',
-        bitrix_PhoneMobile: '',
-        employeeStatus: 1,
-        displayNameLat: 'Ryadinskaya Viktoriya',
-        bD_Date: '2004-07-02T00:00:00',
-        bD_MonthDay: 702,
-        location: 'офис',
-        photoUrl: '',
-        avatarUrl: '',
-        rbu: 'Ф03',
-        active: true,
-        createDate: '2021-06-21T15:57:44.9833333',
-        createBySID: null,
-        bitrixId: 0,
-      }
-      */
-
       commit('SET_USER_LOGIN', user.data)
     },
     async CHECK_ACCESS({ commit, state }) {
@@ -76,7 +46,7 @@ export default {
         withCredentials: true,
       })
 
-      commit('SET_ACCESS', user.data)
+      commit('SET_ACCESS', user.data.data)
     },
     async START_LOADING({ dispatch }) {
       await dispatch('WHO_I_AM')
