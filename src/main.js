@@ -16,6 +16,8 @@ import '@/libs/toastification'
 // Axios Mock Adapter
 import '@/@fake-db/db'
 
+import '@/libs/acl'
+
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)

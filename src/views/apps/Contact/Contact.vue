@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$can('read', 'contact')">
     <div class="sticky">
       <b-row>
         <b-col cols="12">
