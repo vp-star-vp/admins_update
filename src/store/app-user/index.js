@@ -8,6 +8,7 @@ export default {
     user: [],
     groupADAccess: 'f05-app-GetContact',
     ruleApproved: false,
+    userRole: 'admin',
     // rbuApproved: ['03', '04', '05'],
   },
   getters: {
@@ -41,7 +42,7 @@ export default {
     },
     async CHECK_ACCESS({ commit, state }) {
       const user = await axios({
-        url: `${state.url}wolgaadmin_secure.claimslist/${state.groupADAccess}`,
+        url: `${state.url}wolgaadmin_secure.claimslist.exists/${state.groupADAccess}`,
         method: 'GET',
         withCredentials: true,
       })
