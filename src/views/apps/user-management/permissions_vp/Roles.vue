@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$can('read', 'permissions')">
+  <div v-if="$can('read', 'permissions.read')">
     <div class="grid">
       <b-card>
         <Header
@@ -64,9 +64,6 @@ export default {
     ...mapGetters({
       rows: 'userManagement/permissionsVp/getPermissions',
     }),
-    isAdmin() {
-      return this.$store.getters.USER_STATE_FULL.userRole === 'admin'
-    },
   },
 
   mounted() {
@@ -104,7 +101,6 @@ export default {
       await this.read()
     },
     async updateApp(site) {
-      // console.log('')
       await store.dispatch('userManagement/permissionsVp/updatePermission', { url: store.getters.USER_STATE_FULL.url, site })
       await this.read()
     },

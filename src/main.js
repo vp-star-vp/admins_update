@@ -4,6 +4,9 @@ import VueCompositionAPI from '@vue/composition-api'
 
 import router from './router'
 import store from './store'
+
+// console.log('--- import: store')
+
 import App from './App.vue'
 
 // Global Components
@@ -15,7 +18,6 @@ import '@/libs/toastification'
 
 // Axios Mock Adapter
 import '@/@fake-db/db'
-
 import '@/libs/acl'
 
 // BSV Plugin Registration

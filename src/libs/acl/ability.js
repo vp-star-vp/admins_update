@@ -1,13 +1,20 @@
 import { Ability } from '@casl/ability'
-import { initialAbility } from './config'
 
+// export default new Ability([])
+
+import { initialAbility } from './config'
 //  Read ability from localStorage
 // * Handles auto fetching previous abilities if already logged in user
 // ? You can update this if you store user abilities to more secure place
 // ! Anyone can update localStorage so be careful and please update this
-const userData = JSON.parse(localStorage.getItem('userData'))
-const existingAbility = userData ? userData.ability : null
+// const userData = JSON.parse(localStorage.getItem('userData'))
+// console.log('JSON.parse(localStorage.getItem(userData))', JSON.parse(localStorage.getItem('userData')))
 
+// const existingAbility = userData ? userData.ability : null
+
+// console.log('existingAbility:', existingAbility)
+
+/* export default new Ability([]) */
 const permissionsData = [
   {
     // eslint-disable-next-line no-plusplus
@@ -270,4 +277,6 @@ permissionsData.forEach(i => {
 
 ) */
 
-export default new Ability(existingAbility || initialAbility)
+export default new Ability(initialAbility)
+
+/* export default new Ability(existingAbility || initialAbility) */

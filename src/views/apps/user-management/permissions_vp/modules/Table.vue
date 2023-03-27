@@ -98,7 +98,7 @@
               />
             </template>
             <b-dropdown-item
-              v-if="$can('read', 'permissions')"
+              v-if="$can('read', 'permissions.read')"
               v-b-toggle.sidebar-view
               @click="$emit('pickApp', data.item)"
             >
@@ -108,7 +108,7 @@
               <span class="align-middle ml-50">Просмотр </span>
             </b-dropdown-item>
             <b-dropdown-item
-              v-if="$can('update', 'permissions')"
+              v-if="$can('update', 'permissions.update')"
               v-b-toggle.sidebar-edit
               @click="$emit('pickApp', data.item)"
             >
@@ -118,7 +118,7 @@
               <span class="align-middle ml-50">Редактирование </span>
             </b-dropdown-item>
             <b-dropdown-item
-              v-if="$can('delete', 'permissions')"
+              v-if="$can('delete', 'permissions.delete')"
               v-b-toggle.sidebar-remove
               @click="deleteApp(data.item)"
             >

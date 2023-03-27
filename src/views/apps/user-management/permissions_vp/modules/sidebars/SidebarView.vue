@@ -6,12 +6,13 @@
     bg-variant="white"
     right
     shadow
+    width="600px"
   >
     <div class="sidebar-edit">
       <p> <feather-icon
         icon="EyeIcon"
         size="12"
-      /> Сайт</p>
+      /> Разрешение</p>
       <hr>
       <b-form
         novalidate
@@ -34,7 +35,7 @@
           </b-col>
           <b-col cols="12">
             <b-form-group
-              label="роль"
+              label="имя"
               label-for="h-name"
             >
               <p
@@ -55,7 +56,7 @@
                 class="text-primary"
                 style="overflow-wrap: break-word"
               >
-                {{ app.url }}
+                {{ app.apiFunction }}
               </p>
             </b-form-group>
           </b-col>

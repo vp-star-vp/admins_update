@@ -25,7 +25,7 @@ const router = new VueRouter({
       name: 'apps-user-management-users-list-vp',
       component: () => import('@/views/apps/user-management/users_vp/Users.vue'),
       meta: {
-        action: 'admin',
+        action: 'read',
       },
     },
 
@@ -80,41 +80,41 @@ const router = new VueRouter({
       path: '/apps/user-management/sites',
       name: 'app-management-sites',
       component: () => import('@/views/apps/user-management/sites/Sites.vue'),
-      /* meta: {
-        action: 'admin',
-      }, */
+      meta: {
+        action: 'read',
+      },
     },
     {
       path: '/apps/user-management/roles-vp',
       name: 'apps-user-management-roles-vp',
       component: () => import('@/views/apps/user-management/roles_vp/Roles.vue'),
-    /*  meta: {
-        action: 'admin',
-      }, */
+      meta: {
+        action: 'read',
+      },
     },
     {
       path: '/apps/user-management/permissons-vp',
       name: 'apps-user-management-permissons-vp',
       component: () => import('@/views/apps/user-management/permissions_vp/Roles.vue'),
-      /* meta: {
-        action: 'admin',
-      }, */
+      meta: {
+        action: 'read',
+      },
     },
     {
       path: '/apps/user-management/users-list-vp',
       name: 'apps-user-management-users-list-vp',
       component: () => import('@/views/apps/user-management/users_vp/Users.vue'),
       meta: {
-        action: 'admin',
+        action: 'read',
       },
     },
     {
       path: '/apps/app-management/apps',
       name: 'app-management-apps',
       component: () => import('@/views/apps/user-management/apps/Apps.vue'),
-      /* meta: {
-        action: 'admin',
-      }, */
+      meta: {
+        action: 'read',
+      },
     },
 
     // --

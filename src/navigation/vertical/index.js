@@ -1,34 +1,15 @@
 export default [
-/*  {
-    title: 'Home',
-    route: 'home',
-    icon: 'HomeIcon',
-    action: 'admin',
-  },
-  {
-    title: 'Todo',
-    route: 'apps-todo',
-    icon: 'CheckSquareIcon',
-    action: 'admin',
-  },
-  {
-    title: 'Email',
-    route: 'apps-email',
-    icon: 'FileIcon',
-    action: 'admin',
-  }, */
-
-  /* {
-    title: 'contact',
-    icon: 'UsersIcon',
-    route: 'contact',
-    action: 'read',
-  }, */
   {
     title: 'Пользователи',
     icon: 'UserIcon',
     route: 'apps-user-management-users-list-vp',
     action: 'read',
+  },
+  {
+    title: 'Пользователи',
+    icon: 'UserIcon',
+    route: 'apps-user-management-users-list-vp',
+    action: 'admin',
   },
   {
     title: 'Сайты',
@@ -55,7 +36,7 @@ export default [
     action: 'read',
   },
 
-  {
+/*  {
     title: 'Todo',
     route: 'apps-todo',
     icon: 'CheckSquareIcon',
@@ -64,5 +45,5 @@ export default [
   {
     title: '------------',
 
-  },
+  }, */
 ]

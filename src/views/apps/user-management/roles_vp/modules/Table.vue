@@ -34,98 +34,12 @@
         {{ data.value }}
       </p>
     </template>
-    <!--    <template #cell(permissons)="data">
-      <p
-        v-b-toggle.sidebar-site2-app
-        v-b-tooltip.hover
-        style="color: #ea5455"
-        variant="link"
-        title="Настройки разрешений"
-        @click="$emit('pickApp', data.item)"
-      >
-
-        <feather-icon
-          color="#6e6b7b"
-          icon="SettingsIcon"
-          size="14"
-        />
-      </p>
-      &lt;!&ndash;      <b-dropdown
-        v-b-tooltip.hover
-        variant="link"
-        no-caret
-        toggle-class="p-0"
-        right
-        class="ml-75"
-        title="Настройка приложений"
-      >
-        <p>
-          3
-          <feather-icon
-            color="#6e6b7b"
-            icon="GitMergeIcon"
-            size="14"
-          />
-
-        </p>
-
-        <template #button-content>
-
-          3
-          <feather-icon
-            color="#6e6b7b"
-            icon="GitMergeIcon"
-            size="14"
-          />
-        </template>
-        <b-dropdown-item
-          v-b-toggle.sidebar-site2-app
-          :disabled="!$can('apps-read', $store.getters.USER_STATE_FULL.userRole)"
-          @click="$emit('pickApp', data.item)"
-        >
-          <feather-icon
-            icon="ListIcon"
-          />
-          <span class="align-middle ml-50">Привязанные приложения </span>
-        </b-dropdown-item>
-        <b-dropdown-item
-          v-b-toggle.sidebar-view
-          :disabled="!$can('apps-read', $store.getters.USER_STATE_FULL.userRole)"
-          @click="$emit('pickApp', data.item)"
-        >
-          <feather-icon
-            icon="PlusSquareIcon"
-          />
-          <span class="align-middle ml-50">Добавить приложение </span>
-        </b-dropdown-item>
-        <b-dropdown-item
-          v-b-toggle.sidebar-view
-          :disabled="!$can('apps-read', $store.getters.USER_STATE_FULL.userRole)"
-          @click="$emit('pickApp', data.item)"
-        >
-          <feather-icon
-            icon="MinusSquareIcon"
-          />
-          <span class="align-middle ml-50">Удалить приложение </span>
-        </b-dropdown-item>
-      </b-dropdown>&ndash;&gt;
-      <div v-if="1===3">
-        <p style="color: #ea5455">
-          3
-          <feather-icon
-            icon="Share2Icon"
-          />
-        </p>
-        <p> {{ data.item }} </p>
-      </div>
-    </template>-->
     <template #cell(action)="data">
       <b-row>
         <b-col
           align="right"
           cols="12"
         >
-
           <b-dropdown
             v-b-tooltip.hover
             class="ml-75"
@@ -154,7 +68,7 @@
             </b-dropdown-item>
             <b-dropdown-item
               v-b-toggle.sidebar-edit
-              :disabled="!$can('update', 'role.update')"
+              v-if="$can('update', 'role.update')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -164,7 +78,7 @@
             </b-dropdown-item>
             <b-dropdown-item
               v-b-toggle.sidebar-remove
-              :disabled="!$can('delete', 'role.delete')"
+              v-if="$can('delete', 'role.delete')"
               @click="deleteApp(data.item)"
             >
               <feather-icon
@@ -174,6 +88,7 @@
             </b-dropdown-item>
             <hr>
             <b-dropdown-item
+              v-if="$can('create', 'role.permission.create')"
               v-b-toggle.sidebar-site2-app
               v-b-tooltip.hover
               style="color: #ea5455"
