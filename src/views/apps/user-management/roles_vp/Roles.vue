@@ -130,7 +130,7 @@ export default {
     store
       .dispatch('userManagement/rolesVp/readRole', store.getters.USER_STATE_FULL.url)
       .catch(() => {
-        console.log('ошибка получения данных')
+        // console.log('ошибка получения данных')
       })
     return {
       onResize,
