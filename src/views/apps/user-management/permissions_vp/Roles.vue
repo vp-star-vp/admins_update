@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$can('read', 'permissions.read')">
+  <div>
     <div class="grid">
       <b-card>
         <Header

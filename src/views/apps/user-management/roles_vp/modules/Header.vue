@@ -13,7 +13,7 @@
     </div>
     <div class=" p-1 bd-highlight">
       <b-button
-        v-if="$can('create', 'role.create')"
+        v-if="$can('create', 'roles.create')"
         v-b-toggle.sidebar-add
         variant="outline-primary"
       >

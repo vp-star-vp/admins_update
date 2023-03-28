@@ -64,8 +64,8 @@
               />
             </template>
             <b-dropdown-item
-              v-if="$can('read', 'app')"
               v-b-toggle.sidebar-view
+              :disabled="!$can('read', 'apps.read')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -74,8 +74,8 @@
               <span class="align-middle ml-50">Просмотр </span>
             </b-dropdown-item>
             <b-dropdown-item
-              v-if="$can('update', 'app')"
               v-b-toggle.sidebar-edit
+              :disabled="!$can('update', 'apps.update')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -84,8 +84,8 @@
               <span class="align-middle ml-50">Редактирование </span>
             </b-dropdown-item>
             <b-dropdown-item
-              v-if="$can('delete', 'app')"
               v-b-toggle.sidebar-remove
+              :disabled="!$can('delete', 'apps.delete')"
               @click="deleteApp(data.item)"
             >
               <feather-icon

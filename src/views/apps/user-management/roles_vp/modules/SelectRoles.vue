@@ -70,7 +70,6 @@ export default {
   },
   methods: {
     async selectPermission() {
-      console.log(' ++++ ***** setSelectRoles --- ')
       await store.dispatch('userManagement/rolesVp/getSelectRole', { url: store.getters.USER_STATE_FULL.url })
     },
   },

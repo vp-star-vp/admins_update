@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
 import { /* getUserRole, */ isUserLoggedIn } from '@/auth/utils'//
+// import { canNavigate } from '@/libs/acl/routeProtection'
 
 Vue.use(VueRouter)
 
@@ -12,76 +13,22 @@ const router = new VueRouter({
     return { x: 0, y: 0 }
   },
   routes: [
-    /*
-    {
-      path: '/',
-      name: 'contact',
-      component: () => import('@/views/apps/Contact/Contact.vue'),
-    },
-*/
-
     {
       path: '/',
       name: 'apps-user-management-users-list-vp',
       component: () => import('@/views/apps/user-management/users_vp/Users.vue'),
       meta: {
         action: 'read',
+        resource: 'ACL',
       },
     },
-
-    {
-      path: '/:number',
-      name: 'contact',
-      component: () => import('@/views/apps/Contact/Contact.vue'),
-    },
-    /*    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/views/Home.vue'),
-      meta: {
-        pageTitle: 'Home',
-        breadcrumb: [
-          {
-            text: 'Home',
-            active: true,
-          },
-        ],
-      },
-<<<<<<< HEAD
-    }, */
-    /* {
-      path: '/email',
-      name: 'apps-email',
-      component: () => import('@/views/apps/email/Email.vue'),
-      meta: {
-        contentRenderer: 'sidebar-left',
-        contentClass: 'email-application',
-      },
-    }, */
-    // },
-    // {
-    //   path: '/second-page',
-    //   name: 'second-page',
-    //   component: () => import('@/views/SecondPage.vue'),
-    //   meta: {
-    //     pageTitle: 'Second Page',
-    //     breadcrumb: [
-    //       {
-    //         text: 'Second Page',
-    //         active: true,
-    //       },
-    //     ],
-    //   },
-    // },
-    // *------------------- pages RULES NONE --------------------------------*
-    // --
-
     {
       path: '/apps/user-management/sites',
       name: 'app-management-sites',
       component: () => import('@/views/apps/user-management/sites/Sites.vue'),
       meta: {
         action: 'read',
+        resource: 'ACL',
       },
     },
     {
@@ -127,14 +74,14 @@ const router = new VueRouter({
       // action: 'none',
       // },
     },
-    {
+    /*    {
       path: '/login',
       name: 'login',
       component: () => import('@/views/Login.vue'),
       meta: {
         layout: 'full',
       },
-    },
+    }, */
     {
       path: '/error-404',
       name: 'error-404',
@@ -147,45 +94,6 @@ const router = new VueRouter({
       path: '*',
       redirect: 'error-404',
     },
-
-    {
-      path: '/apps/todo',
-      name: 'apps-todo',
-      component: () => import('@/views/apps/todo/Todo.vue'),
-      meta: {
-        contentRenderer: 'sidebar-left',
-        contentClass: 'todo-application',
-      },
-    },
-    {
-      path: '/apps/todo/:filter',
-      name: 'apps-todo-filter',
-      component: () => import('@/views/apps/todo/Todo.vue'),
-      meta: {
-        contentRenderer: 'sidebar-left',
-        contentClass: 'todo-application',
-        navActiveLink: 'apps-todo',
-      },
-      beforeEnter(to, _, next) {
-        if (['important', 'completed', 'deleted'].includes(to.params.filter)) next()
-        else next({ name: 'error-404' })
-      },
-    },
-    {
-      path: '/apps/todo/tag/:tag',
-      name: 'apps-todo-tag',
-      component: () => import('@/views/apps/todo/Todo.vue'),
-      meta: {
-        contentRenderer: 'sidebar-left',
-        contentClass: 'todo-application',
-        navActiveLink: 'apps-todo',
-      },
-      beforeEnter(to, _, next) {
-        if (['team', 'low', 'medium', 'high', 'update'].includes(to.params.tag)) next()
-        else next({ name: 'error-404' })
-      },
-    },
-
   ],
 })
 

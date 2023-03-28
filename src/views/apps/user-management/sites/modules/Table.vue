@@ -55,7 +55,7 @@
             </template>
             <b-dropdown-item
               v-b-toggle.sidebar-view
-              :disabled="!$can('apps-read', $store.getters.USER_STATE_FULL.userRole)"
+              :disabled="!$can('read', 'sites.read')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -65,7 +65,7 @@
             </b-dropdown-item>
             <b-dropdown-item
               v-b-toggle.sidebar-edit
-              :disabled="!$can('apps-update', $store.getters.USER_STATE_FULL.userRole)"
+              :disabled="!$can('update', 'sites.update')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -74,7 +74,7 @@
               <span class="align-middle ml-50">Редактирование </span>
             </b-dropdown-item>
             <b-dropdown-item
-              v-if="$can('delete', 'site')"
+              :disabled="!$can('delete', 'sites.delete')"
               v-b-toggle.sidebar-remove
               @click="deleteApp(data.item)"
             >
@@ -85,6 +85,7 @@
             </b-dropdown-item>
             <hr>
             <b-dropdown-item
+              :disabled="!$can('create', 'sites.apps.create')"
               v-b-toggle.sidebar-site2-app
               @click="$emit('pickApp', data.item)"
             >

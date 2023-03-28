@@ -71,9 +71,6 @@ export default {
     ...mapGetters({
       rows: 'userManagement/sites/getSites',
     }),
-    isAdmin() {
-      return this.$store.getters.USER_STATE_FULL.userRole === 'admin'
-    },
   },
 
   mounted() {
@@ -118,9 +115,6 @@ export default {
     readSite() {
       store.dispatch('userManagement/sites/readSites', store.getters.USER_STATE_FULL.url)
     },
-    addTodo(related) {
-      console.log('related: ', related)
-    },
     pickApp(data) {
       this.selectedSite = data
     },
@@ -133,7 +127,7 @@ export default {
     store
       .dispatch('userManagement/sites/readSites', store.getters.USER_STATE_FULL.url)
       .catch(() => {
-        console.log('ошибка получения данных')
+        // console.log('ошибка получения данных')
       })
     return {
       onResize,

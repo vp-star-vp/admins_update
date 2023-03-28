@@ -71,9 +71,6 @@ export default {
     ...mapGetters({
       rows: 'userManagement/rolesVp/getRoles',
     }),
-    isAdmin() {
-      return this.$store.getters.USER_STATE_FULL.userRole === 'admin'
-    },
   },
 
   mounted() {
@@ -111,7 +108,6 @@ export default {
       await this.read()
     },
     async updateApp(site) {
-      // console.log('')
       await store.dispatch('userManagement/rolesVp/updateRole', { url: store.getters.USER_STATE_FULL.url, site })
       await this.read()
     },
@@ -121,9 +117,6 @@ export default {
     },
     read() {
       store.dispatch('userManagement/rolesVp/readRole', store.getters.USER_STATE_FULL.url)
-    },
-    addTodo(related) {
-      console.log('related: ', related)
     },
     pickApp(data) {
       this.selectedSite = data

@@ -101,7 +101,6 @@
                 </template>
                 <b-dropdown-item
                   v-b-toggle.sidebar-remove
-                  :disabled="!$can('apps-delete', $store.getters.USER_STATE_FULL.userRole)"
                   @click="delAppToSie(data.item.id)"
                 >
                   <feather-icon

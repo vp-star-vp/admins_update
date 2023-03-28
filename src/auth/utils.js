@@ -12,7 +12,7 @@ export const isUserLoggedIn = () => {
   return localStorage.getItem('userData') && localStorage.getItem(useJwt.jwtConfig.storageTokenKeyName)
 }
 */
-
+export const getUserRole = () => store.getters.USER_ROLE
 export const isUserLoggedIn = () => store.getters.USER_STATE.email !== undefined
 
 // export const getUserData = () => JSON.parse(localStorage.getItem('userData'))

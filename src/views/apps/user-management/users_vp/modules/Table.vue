@@ -40,23 +40,11 @@
         {{ data.value }}
       </p>
     </template>
-    <!--    <template #cell(email)="data">
-      <p class="sid">
-        {{ data.value }}
-      </p>
-    </template>
-    <template #cell(defaultRBU)="data">
-      <p class="sid">
-        {{ data.value }}
-      </p>
-    </template>-->
     <template #cell(name)="data">
       <p class="user">
         <feather-icon icon="UserIcon" /> {{ data.item.name }}
       </p>
-      <!--      {{!$can('apps-read', $store.getters.USER_STATE_FULL.userRole)}}-->
     </template>
-    <!--    :disabled="!$can('apps-read', $store.getters.USER_STATE_FULL.userRole)"-->
     <template #cell(action)="data">
       <b-row>
         <b-col

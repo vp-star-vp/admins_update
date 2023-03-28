@@ -65,9 +65,6 @@ export default {
     ...mapGetters({
       rows: 'userManagement/apps/getApps',
     }),
-    isAdmin() {
-      return this.$store.getters.USER_STATE_FULL.userRole === 'admin'
-    },
   },
 
   mounted() {
@@ -122,7 +119,7 @@ export default {
     store
       .dispatch('userManagement/apps/readApps', store.getters.USER_STATE_FULL.url)
       .catch(() => {
-        console.log('ошибка получения данных')
+        // console.log('ошибка получения данных')
       })
     return {
       onResize,

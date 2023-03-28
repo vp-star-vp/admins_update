@@ -1,5 +1,4 @@
 import axios from '@axios'
-// import { Ability } from '@casl/ability'
 import Ability from '@/libs/acl/ability'
 
 export default {
@@ -12,7 +11,6 @@ export default {
     ability: [],
     permissions: [],
     // ---  todo delete --->
-    info: 'https://confluence.inside/pages/viewpage.action?pageId=191284320',
     ruleApproved: true,
     userRole: 'admin',
     rbuApproved: ['03', '04', '05'],
@@ -29,9 +27,6 @@ export default {
   },
   mutations: {
     SET_USER_LOGIN(state, user) {
-      /* if (user.rbu && user.rbu.length > 0 && state.rbuApproved.indexOf(user.rbu.replace(/\D/g, '')) >= 0) {
-        state.ruleApproved = true
-      } */
       state.user = user
     },
     SET_USER_PERMISSIONS(state, permissions) {
@@ -46,9 +41,7 @@ export default {
         )
       })
       state.ability = locPerm
-      /*      if (1 === 1) { */
-      Ability.can(state.ability)
-      /*      } */
+      Ability.update(state.ability)
     },
   },
   actions: {
@@ -67,22 +60,11 @@ export default {
         method: 'GET',
         withCredentials: true,
       })
-      // console.log('+ permissions: ', permissions.data.data)
       commit('SET_USER_PERMISSIONS', permissions.data.data)
     },
-    /*    async CHECK_ACCESS({ commit, state }) {
-      const user = await axios({
-        url: `${state.url}wolgaadmin_secure.claimslist.exists/${state.groupADAccess}`,
-        method: 'GET',
-        withCredentials: true,
-      })
-
-      commit('SET_ACCESS', user.data.data)
-    }, */
     async START_LOADING({ dispatch }) {
       await dispatch('WHO_I_AM')
       await dispatch('GET_MY_PERMISSIONS')
-      // await dispatch('CHECK_ACCESS')
     },
   },
 }

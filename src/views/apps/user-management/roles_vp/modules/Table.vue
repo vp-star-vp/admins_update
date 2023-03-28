@@ -40,6 +40,7 @@
           align="right"
           cols="12"
         >
+
           <b-dropdown
             v-b-tooltip.hover
             class="ml-75"
@@ -57,8 +58,8 @@
               />
             </template>
             <b-dropdown-item
-              v-if="$can('read', 'role.read')"
               v-b-toggle.sidebar-view
+              :disabled="!$can('read', 'roles.read')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -68,7 +69,7 @@
             </b-dropdown-item>
             <b-dropdown-item
               v-b-toggle.sidebar-edit
-              v-if="$can('update', 'role.update')"
+              :disabled="!$can('update', 'roles.update')"
               @click="$emit('pickApp', data.item)"
             >
               <feather-icon
@@ -78,7 +79,7 @@
             </b-dropdown-item>
             <b-dropdown-item
               v-b-toggle.sidebar-remove
-              v-if="$can('delete', 'role.delete')"
+              :disabled="!$can('delete', 'roles.delete')"
               @click="deleteApp(data.item)"
             >
               <feather-icon
@@ -88,9 +89,9 @@
             </b-dropdown-item>
             <hr>
             <b-dropdown-item
-              v-if="$can('create', 'role.permission.create')"
               v-b-toggle.sidebar-site2-app
               v-b-tooltip.hover
+              :disabled="!$can('create', 'roles.permissions.create')"
               style="color: #ea5455"
               title="Настройки разрешений"
               variant="link"

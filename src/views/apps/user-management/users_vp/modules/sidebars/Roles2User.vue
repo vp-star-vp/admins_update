@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form-group>
+    <b-form-group v-if="$can('create','users.roles.create')">
       <b-row>
         <b-col cols="4">
           <SelectAppsV2 @update="setSelectSolution" />

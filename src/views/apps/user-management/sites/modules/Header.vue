@@ -11,7 +11,7 @@
     </div>
     <div class=" p-1 bd-highlight">
       <b-button
-        v-if="$can('create', 'site')"
+        v-if="$can('create', 'sites.create')"
         v-b-toggle.sidebar-add
         variant="outline-primary"
       >

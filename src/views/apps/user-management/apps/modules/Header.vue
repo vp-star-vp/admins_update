@@ -11,8 +11,8 @@
     </div>
     <div class=" p-1 bd-highlight">
       <b-button
-        v-if="$can('create', 'app')"
         v-b-toggle.sidebar-add
+        :disabled="!$can('create', 'apps.create')"
         variant="outline-primary"
       >
         Новое приложение
