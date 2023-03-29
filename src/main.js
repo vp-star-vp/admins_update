@@ -13,16 +13,16 @@ import App from './App.vue'
 import './global-components'
 
 // 3rd party plugins
-import '@/libs/portal-vue'
-import '@/libs/toastification'
+// import '@/libs/portal-vue'
+// import '@/libs/toastification'
 
 // Axios Mock Adapter
-import '@/@fake-db/db'
+// import '@/@fake-db/db'
 import '@/libs/acl'
 
 // BSV Plugin Registration
-Vue.use(ToastPlugin)
-Vue.use(ModalPlugin)
+// Vue.use(ToastPlugin)
+// Vue.use(ModalPlugin)
 
 // Composition API
 Vue.use(VueCompositionAPI)

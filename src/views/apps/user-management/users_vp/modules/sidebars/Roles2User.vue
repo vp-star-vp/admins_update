@@ -66,7 +66,7 @@
                 />
               </template>
               <b-dropdown-item
-                v-if="$can('create', 'user.role.add')"
+                v-if="$can('create', 'users.roles.create')"
                 v-b-toggle.sidebar-remove
                 @click="delRolesToUser(data.item.id)"
               >
