@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: '/admins',
+  publicPath: '/admins-dev',
   /*  module: {
     loaders: [
       {
